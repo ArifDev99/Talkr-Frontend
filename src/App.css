@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+.messgeparent{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+}
+
+.messegechild{
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-right: 2.5rem;
+    color: rgb(55 65 81);
+    background-color: rgb(94 234 212);
+    border-radius: 0.75rem
+}
+
+.user{
+    display: block;
+    text-align: start;
+    color: rgb(124 58 237);
+}
+.messege{
+    display: block;
+}
+
+
+em-emoji-picker {
+    --border-radius: 24px;
+
+    height: 350px;
+    min-height: 350px;
+    max-height: 800px;
+    width: 320px;
+  }
+
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
