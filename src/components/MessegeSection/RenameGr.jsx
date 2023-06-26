@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { ChatState } from "../../Contex/chatProvider";
 
+
+const BASE_URI=import.meta.env.VITE_BASE_URI
+
 export default function RenameGr({fetchAgain, setFetchAgain}) {
   const [groupchatName, setgroupchatName] = useState("");
   const { user, chats, setChats,selectedChat, setSelectedChat } = ChatState();
@@ -28,7 +31,7 @@ export default function RenameGr({fetchAgain, setFetchAgain}) {
         }),
       };
       let data = await fetch(
-        "http://localhost:4000/api/v1/chat/rename_group",
+        `${BASE_URI}api/v1/chat/rename_group`,
         config
       ).then((res) => res.json());
       // setChats([data, ...chats]);

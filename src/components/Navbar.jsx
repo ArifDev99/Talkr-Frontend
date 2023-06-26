@@ -21,7 +21,7 @@ export default function Navbar() {
       <NavLink to="/" end>
         <img className="w-10 h-10  rounded-lg " src={logo} alt="" />
       </NavLink>
-      <p className="items-center text-2xl py-1 md:text-xl">Chat App</p>
+      <p className="items-center text-2xl py-1 md:text-xl">Talkr</p>
       <div className=" flex items-center gap-2">
         <button
           className="relative w-8 h-8 rounded-lg flex justify-center items-center border-0 bg-gray-900 hover:bg-gray-500 "

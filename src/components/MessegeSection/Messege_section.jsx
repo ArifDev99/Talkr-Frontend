@@ -9,6 +9,8 @@ import { io } from "socket.io-client";
 
 import Loading from "../../common/Loading";
 
+const BASE_URI=import.meta.env.VITE_BASE_URI
+
 var selectedChatCompare;
 export default function Messege_section({ socket, fetchAgain, setFetchAgain }) {
   const [allMessages, setallMessages] = useState([]);
@@ -59,7 +61,7 @@ export default function Messege_section({ socket, fetchAgain, setFetchAgain }) {
       };
       
       let data = await fetch(
-        `http://localhost:4000/api/v1/message/${selectedChat._id}`,
+        `${BASE_URI}api/v1/message/${selectedChat._id}`,
         config
         ).then((res) => res.json());
         // console.log(data);

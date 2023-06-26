@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+const BASE_URI=import.meta.env.VITE_BASE_URI
+
+
 
 
 
@@ -56,7 +59,7 @@ export default function Signup() {
     let userDetails={firstname,lastname,email,password,profile_img:pic};
     // localStorage.setItem("userDetails",JSON.stringify(userDetails))
       
-      let req= await fetch('http://localhost:4000/api/v1/user/signup',{
+      let req= await fetch(`${BASE_URI}api/v1/user/signup`,{
         method:'POST',
         headers:{
           'Accept':'application/json',

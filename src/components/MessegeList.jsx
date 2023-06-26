@@ -3,7 +3,7 @@ import { ChatState } from "../Contex/chatProvider";
 import { getSenderImg, getSenderName } from "./utils/chatLogis";
 import Loading from "../common/Loading";
 
-
+const BASE_URI=import.meta.env.VITE_BASE_URI
 
 
 
@@ -22,7 +22,7 @@ export default function MessegeList({fetchAgain, setFetchAgain}) {
       return;
     }
     try {
-      let data = await fetch("http://localhost:4000/api/v1/chat", {
+      let data = await fetch(`${BASE_URI}api/v1/chat`, {
         headers: {
           Authorization: `Bearer ${user.accessToken}`,
         },

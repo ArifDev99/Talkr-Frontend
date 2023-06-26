@@ -6,6 +6,9 @@ import data from "@emoji-mart/data";
 import { ChatState } from "../../Contex/chatProvider";
 // import 'emoji-mart/css/emoji-mart.css'
 
+
+const BASE_URI=import.meta.env.VITE_BASE_URI
+
 export default function Chat_input({ socket, fetchAgain,setFetchAgain ,allMessages, setallMessages,typing, setTyping,istyping}) {
 
   const [message, setmessage] = useState("");
@@ -47,7 +50,7 @@ export default function Chat_input({ socket, fetchAgain,setFetchAgain ,allMessag
           };
 
           setmessage("");
-          let data=await fetch("http://localhost:4000/api/v1/message/",config).then((res)=>res.json());
+          let data=await fetch(`${BASE_URI}api/v1/message/`,config).then((res)=>res.json());
           console.log(data);
           setallMessages([...allMessages,data]);
           socket.emit("send_message",data)

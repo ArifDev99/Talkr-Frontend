@@ -3,6 +3,8 @@ import { ChatState } from "../Contex/chatProvider";
 import UserListItem from "./UserListItem";
 import BadgedUser from "./BadgedUser";
 
+const BASE_URI=import.meta.env.VITE_BASE_URI
+
 function DroupDown({header , close}) {
   const [search, setSearch] = useState("");
 
@@ -34,7 +36,7 @@ function DroupDown({header , close}) {
           users: JSON.stringify(selectedUsers.map((u) => u._id)),
         })
       }
-      let data = await fetch("http://localhost:4000/api/v1/chat/group", config).then(
+      let data = await fetch(`${BASE_URI}api/v1/chat/group`, config).then(
       (res) => res.json());
       setChats([data,...chats]);
       setSelectedChat(data)
@@ -64,7 +66,7 @@ function DroupDown({header , close}) {
       };
 
       const fetchdata = await fetch(
-        `http://localhost:4000/api/v1/user?search=${search}`,
+        `${BASE_URI}api/v1/user?search=${search}`,
         config
       ).then((res) => res.json());
       setSearchResult(fetchdata);
@@ -84,7 +86,7 @@ function DroupDown({header , close}) {
     setSearch("");
     
   };
-  console.log("Selected UserLIst",selectedUsers);
+  // console.log("Selected UserLIst",selectedUsers);
 
   const handleDelete=(Deluser)=>{
 

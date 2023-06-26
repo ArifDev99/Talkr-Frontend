@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Cookies } from 'react-cookie';
 
+const BASE_URI=import.meta.env.VITE_BASE_URI
+
+
+
 export default function Signin() {
   const [email,setEmail]=useState("");
   const [password,setPassword]=useState("");
@@ -19,7 +23,7 @@ export default function Signin() {
 
     // }
 
-    let req =await fetch('http://localhost:4000/api/v1/user/login',{
+    let req =await fetch(`${BASE_URI}api/v1/user/login`,{
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -38,7 +42,7 @@ export default function Signin() {
       // console.log(message);
       localStorage.setItem("userInfo",JSON.stringify(data));
       // localStorage.setItem("firstName",message.firstname);
-      window.location.href="http://127.0.0.1:5173/"
+      window.location.href="http://127.0.0.1:5173/"  
 
     }
   }

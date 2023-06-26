@@ -9,10 +9,16 @@ import { ChatState } from '../Contex/chatProvider';
 // import Sidedrawer from './Sidedrawer';
 // import SideDrawer2 from './SideDrawer2';
 
+const BASE_URI=import.meta.env.VITE_BASE_URI
 
+var connectionOptions =  {
+            "force new connection" : true,
+            "reconnectionAttempts": "Infinity", 
+            "timeout" : 60000,                  
+            "transports" : ["websocket", "polling", "flashsocket"]
+        };
 
-
-const socket = io("http://localhost:4000");
+const socket = io(`${BASE_URI}`,connectionOptions);
 export default function Hero() {
   const [fetchAgain, setFetchAgain] = useState(false);
   const [socketConnected, setSocketConnected] = useState(false);

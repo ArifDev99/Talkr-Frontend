@@ -3,6 +3,8 @@ import BadgedUser from "./BadgedUser";
 import { ChatState } from "../Contex/chatProvider";
 import UserListItem from "./UserListItem";
 
+const BASE_URI=import.meta.env.VITE_BASE_URI
+
 export default function AddUserGroup({fetchAgain, setFetchAgain}) {
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
@@ -28,7 +30,7 @@ export default function AddUserGroup({fetchAgain, setFetchAgain}) {
       };
 
       const fetchdata = await fetch(
-        `http://localhost:4000/api/v1/user?search=${search}`,
+        `${BASE_URI}api/v1/user?search=${search}`,
         config
       ).then((res) => res.json());
       setSearchResult(fetchdata);
@@ -67,7 +69,7 @@ export default function AddUserGroup({fetchAgain, setFetchAgain}) {
               };
       
             const fetchdata = await fetch(
-              `http://localhost:4000/api/v1/chat/addtogroup`,
+              `${BASE_URI}api/v1/chat/addtogroup`,
               config
             ).then((res) => res.json());
             setSelectedChat(fetchdata);
@@ -82,7 +84,7 @@ export default function AddUserGroup({fetchAgain, setFetchAgain}) {
     }
 
 
-  console.log("Selected UserLIst", selectedUsers);
+  // console.log("Selected UserLIst", selectedUsers);
 
   const handleDelete = async (Deluser) => {
     if (selectedChat.groupAdmin._id !== user._id && Deluser._id !== user._id) {
@@ -108,7 +110,7 @@ export default function AddUserGroup({fetchAgain, setFetchAgain}) {
         };
   
         const fetchdata = await fetch(
-          `http://localhost:4000/api/v1/chat/removefromgroup`,
+          `${BASE_URI}api/v1/chat/removefromgroup`,
           config
         ).then((res) => res.json());
         setSelectedChat(fetchdata);

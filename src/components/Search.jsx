@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { ChatState } from "../Contex/chatProvider";
 import UserListItem from "./UserListItem";
 
+const BASE_URI=import.meta.env.VITE_BASE_URI
+
 export default function Search() {
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
@@ -22,7 +24,7 @@ export default function Search() {
       };
 
       const fetchdata = await fetch(
-        `http://localhost:4000/api/v1/user?search=${search}`,
+        `${BASE_URI}api/v1/user?search=${search}`,
         config
       ).then((res) => res.json());
       setSearchResult(fetchdata);
@@ -50,7 +52,7 @@ export default function Search() {
         body: JSON.stringify({ userid: userId }),
       };
   
-      let data = await fetch("http://localhost:4000/api/v1/chat/", config).then(
+      let data = await fetch(`${BASE_URI}api/v1/chat/`, config).then(
         (res) => res.json()
       );
       if (!chats.find((c) => c._id === data._id)) {
