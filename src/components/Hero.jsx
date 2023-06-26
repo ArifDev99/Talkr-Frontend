@@ -11,14 +11,16 @@ import { ChatState } from '../Contex/chatProvider';
 
 const BASE_URI=import.meta.env.VITE_BASE_URI
 
-var connectionOptions =  {
-            "force new connection" : true,
-            "reconnectionAttempts": "Infinity", 
-            "timeout" : 60000,                  
-            "transports" : ["websocket", "polling", "flashsocket"]
-        };
+// var connectionOptions =  {
+//             "force new connection" : true,
+//             "reconnectionAttempts": "Infinity", 
+//             "timeout" : 60000,                  
+//             "transports" : ["websocket", "polling", "flashsocket"]
+//         };
 
-const socket = io(`${BASE_URI}`,connectionOptions);
+const socket = io(`${BASE_URI}`,{
+  transports: ["websocket"]
+});
 export default function Hero() {
   const [fetchAgain, setFetchAgain] = useState(false);
   const [socketConnected, setSocketConnected] = useState(false);
