@@ -13,7 +13,7 @@ export default function Navbar() {
 
   const handleLogout = () => {
     localStorage.clear();
-    window.location.href = "http://127.0.0.1:5173/";
+    window.location.href = "https://talkr-frontend.vercel.app/";
   };
 
   return (
