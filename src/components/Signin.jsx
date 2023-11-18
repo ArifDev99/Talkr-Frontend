@@ -49,8 +49,8 @@ export default function Signin() {
       // console.log(message);
       localStorage.setItem("userInfo",JSON.stringify(data));
       // localStorage.setItem("firstName",message.firstname);
-      window.location.href="http://localhost:5173/"  
-      // window.location.href="https://talkr-frontend.vercel.app/"  
+      // window.location.href="http://localhost:5173/"  
+      window.location.href="https://talkr-frontend.vercel.app/"  
 
     }
   }
