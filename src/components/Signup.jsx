@@ -80,8 +80,8 @@ export default function Signup() {
       // alert(message);
   };
   return (
-    <div className="flex justify-between items-center h-[calc(100vh-4rem)]">
-      <div className="flex justify-center items-center w-[50%]">
+    <div className="flex justify-between items-center h-[calc(100vh-4rem)] sm:flex-col">
+      <div className="flex justify-center items-center w-[50%] sm:w-full p-4">
         <div className="flex-col w-96 justify-center rounded-md shadow-2xl p-6 space-y-4 md:space-y-6 sm:p-8 text-black">
           <h1 className="text-xl text-center font-bold leading-tight tracking-tight text-dark md:text-2xl ">
             Create and account
@@ -182,7 +182,7 @@ export default function Signup() {
           </form>
         </div>
       </div>
-      <div className="w-[50%]">
+      <div className="w-[50%] sm:hidden">
         <img className="bgimg" src={bgimg} />
       </div>
     </div>

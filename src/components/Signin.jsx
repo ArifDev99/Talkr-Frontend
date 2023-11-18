@@ -57,12 +57,12 @@ export default function Signin() {
 
 
   return (
-    <div className='flex justify-between items-center h-[calc(100vh-4rem)]'>
-      <div className="w-[50%]">
+    <div className='flex justify-between items-center p-4 h-[calc(100vh-4rem)] sm:flex-col'>
+      <div className="w-[50%] sm:hidden" >
         <img className="bgimg" src={bgimg}/>
       </div>
 
-    <div className="flex justify-center items-center w-[50%]">
+    <div className="flex justify-center items-center w-[50%] sm:w-full">
       <div className="flex-col w-96 justify-center rounded-md shadow-2xl   p-6 space-y-4 md:space-y-6 sm:p-8">
         <h1 className="text-xl text-center font-bold leading-tight tracking-tight text-dark md:text-2xl ">
           LOGIN
