@@ -17,7 +17,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="sticky top-0 flex h-14 justify-between ietms-center p-2 bg-gray-600 mb-2">
+    <div className="sticky top-0 flex h-14 justify-between ietms-center p-2 bg-dark ">
       <NavLink to="/" end>
         <img className="w-10 h-10  rounded-lg " src={logo} alt="" />
       </NavLink>
@@ -112,7 +112,7 @@ export default function Navbar() {
                     Profile
                   </NavLink>
                   <NavLink
-                    className="block  px-4 py-2 text-md text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-100 dark:hover:text-white dark:hover:bg-gray-600"
+                    className="block  px-4 py-2 text-md bg-light-blue-2  rounded-lg p-2 hover:bg-light-blue-1 text-white "
                     onClick={handleLogout}
                   >
                     Log Out
@@ -125,13 +125,13 @@ export default function Navbar() {
           <div className="flex items-center gap-2">
             <NavLink
               to="/signup"
-              className=" text-white bg-black border border-sky-500 rounded-lg p-2 hover:bg-sky-500 hover:text-white md:p-1 "
+              className=" text-white bg-light-blue-2  rounded-lg p-2 hover:bg-light-blue-1 hover:text-white md:p-1 "
             >
               Sign up
             </NavLink>
             <NavLink
               to="/signin"
-              className=" text-white bg-black border border-sky-500 rounded-lg p-2 hover:bg-sky-500 hover:text-white md:p-1"
+              className=" text-white bg-light-blue-2 rounded-lg p-2 hover:bg-light-blue-1 hover:text-white md:p-1"
             >
               Log IN
             </NavLink>

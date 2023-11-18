@@ -5,7 +5,18 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        // my colore
+        
+        'primary-light': '#E5CFF7', 
+        'dark':"#5B0888",
+        'dark-seconday':"#713ABE",
+        'primary-dark':"#9D76C1",
+        'light-blue-1':"#9400FF",
+        'light-blue-2':"#9f1aff",
+      },
+    },
     screens: {
       '2xl': {'max': '1535px'},
       // => @media (max-width: 1535px) { ... }

@@ -7,7 +7,7 @@ export default function Layout() {
   return (
     <div className=' overflow-hidden'>
       <Navbar />
-      <div className=' h-full bg-black '>
+      <div className=' h-full bg-primary-light  '>
        
         <Outlet/>
 
