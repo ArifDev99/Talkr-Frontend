@@ -94,7 +94,7 @@ function DroupDown({header , close}) {
 
   }
   return (
-    <div className="flex flex-col w-full max-w-md px-4 py-2 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-2 lg:px-10">
+    <div className="flex flex-col w-full max-w-md px-4 py-2 rounded-lg shadow bg-dark sm:px-6 md:px-2 lg:px-10">
       <div className="self-center mb-2 text-xl font-light text-gray-600 sm:text-2xl dark:text-white">
         {header}
       </div>
@@ -104,7 +104,7 @@ function DroupDown({header , close}) {
             <div className="flex relative ">
               <input
                 type="text"
-                className=" rounded-lg flex-1 appearance-none bg-black border border-gray-300 w-full py-2 px-4  text-gray-700 placeholder-gray-200 shadow-sm text-base focus:outline-none focus:ring-1 focus:border-transparent"
+                className=" rounded-lg flex-1 appearance-none bg-primary-light border border-gray-300 w-full py-2 px-4  text-gray-700 placeholder-gray-700 shadow-sm text-base focus:outline-none focus:ring-1 focus:border-transparent"
                 placeholder="Your Group Name"
                 onChange={(e)=>setgroupchatName(e.target.value)}
               />
@@ -123,7 +123,7 @@ function DroupDown({header , close}) {
           }
           {header !== "Rename Group" &&<div className="flex flex-col mb-2">
             <div className="flex relative ">
-              <span className="rounded-l-md inline-flex  items-center px-3 border-t bg-black border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
+              <span className="rounded-l-md inline-flex  items-center px-3 border-t bg-primary-light border-l border-b  border-dark text-gray-700 shadow-sm text-sm">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
@@ -140,7 +140,7 @@ function DroupDown({header , close}) {
               <input
                 type="text"
                 id="sign-in-email"
-                className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-black text-gray-200 placeholder-gray-200 shadow-sm text-base focus:outline-none focus:ring-1"
+                className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-primary-light text-gray-800 placeholder-gray-700 shadow-sm text-base focus:outline-none focus:ring-1"
                 placeholder="Search Friend"
                 onChange={(e)=>handleSearch(e.target.value)}
               />
@@ -156,7 +156,7 @@ function DroupDown({header , close}) {
           <div className="flex w-full">
             <button
               type="button"
-              className="py-2 px-4  bg-gray-700 hover:bg-gray-900 focus:ring-black  text-gray-200 w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+              className="py-2 px-4 bg-light-blue-1  text-gray-200 w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
               onClick={handleSulbmit}
             >
               submit

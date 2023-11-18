@@ -24,7 +24,7 @@ export default function Navbar() {
       <p className="items-center text-2xl py-1 md:text-xl">Talkr</p>
       <div className=" flex items-center gap-2">
         <button
-          className="relative w-8 h-8 rounded-lg flex justify-center items-center border-0 bg-gray-900 hover:bg-gray-500 "
+          className="relative w-8 h-8 rounded-lg flex justify-center items-center border-0 bg-gray-900 hover:bg-light-blue-2"
           onClick={() => setshowNotificationList(!showNotificationList)}
         >
           {notification.length !==0 &&<span class="absolute w-4 h-4 text-xs bg-red-500 rounded-full right-0 top-0 leading">
@@ -48,7 +48,7 @@ export default function Navbar() {
               aria-labelledby="options-menu"
             >
               {!notification.length && (
-                <div className="block  px-4 py-1  border-b-2  text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-100 rounded-md dark:hover:text-white dark:hover:bg-gray-600">
+                <div className="block  px-4 py-1  border-b-2  text-sm text-gray-700 hover:bg-light-blue-2 hover:text-gray-900 dark:text-gray-100 rounded-md dark:hover:text-white dark:hover:bg-gray-600">
                   No Notification to show
                 </div>
               )}
@@ -75,7 +75,7 @@ export default function Navbar() {
 
         {user ? (
           <div className="relative inline-block text-left">
-            <div className=" border border-gray-300  dark:bg-gray-800 shadow-sm flex items-center justify-center w-full rounded-md  px-2 py-1 text-sm font-medium text-gray-700 dark:text-gray-50 hover:bg-gray-50 dark:hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-500">
+            <div className=" border border-gray-300  shadow-sm flex items-center justify-center w-full rounded-md  px-2 py-1 text-sm font-medium text-gray-50 hover:bg-light-blue-2">
               <button
                 type="button"
                 className=" flex items-center justify-center"
@@ -101,18 +101,18 @@ export default function Navbar() {
               </button>
             </div>
             {showmenu && (
-              <div className="absolute right-0 w-56 mt-2 origin-top-right bg-white rounded-md shadow-lg dark:bg-gray-800 ring-1 ring-black ring-opacity-5">
+              <div className="absolute right-0 w-56 mt-2 p-2 origin-top-right bg-white rounded-md shadow-lg dark:bg-gray-800 ring-1 ring-black ring-opacity-5">
                 <div
                   className="py-1 "
                   role="menu"
                   aria-orientation="vertical"
                   aria-labelledby="options-menu"
                 >
-                  <NavLink className="block  px-4 py-2 text-md text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-100 dark:hover:text-white dark:hover:bg-gray-600">
+                  <NavLink className="block  px-4 py-2 mb-2 text-md rounded-sm text-gray-200 hover:bg-light-blue-1 hover:text-gray-900">
                     Profile
                   </NavLink>
                   <NavLink
-                    className="block  px-4 py-2 text-md bg-light-blue-2  rounded-lg p-2 hover:bg-light-blue-1 text-white "
+                    className="block  px-4 py-2 mb-2 text-md rounded-sm text-gray-200 hover:bg-light-blue-1 hover:text-gray-900 "
                     onClick={handleLogout}
                   >
                     Log Out

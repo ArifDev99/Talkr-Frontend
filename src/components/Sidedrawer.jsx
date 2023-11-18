@@ -8,8 +8,8 @@ const SideDrawer = ({ isOpen, onClose, children }) => {
         isOpen ? 'block' : 'hidden'
       }`}
     >
-      <div className="fixed inset-0 bg-gray-900 opacity-50" onClick={onClose} />
-      <div className="fixed p-2 inset-y-0 top-16 right-0 w-[20%] bg-gray-800 shadow-sm rounded-lg">
+      <div className="fixed inset-0 bg-black opacity-50" onClick={onClose} />
+      <div className="fixed p-2 inset-y-0 top-16 right-0 w-[20%] bg-black shadow-sm rounded-lg">
         <div className="flex  w-full mb-2 justify-end ">
             <button
                 className="  text-3xl text-white items-center cursor-pointer  "

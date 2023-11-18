@@ -21,14 +21,14 @@ export default function MessegeDisplay({ messages,user }) {
 
     <>
     
-      <div id="messege_display" className=" bg-gray-800 h-full w-full py-1 px-1 overflow-y-hidden ">
+      <div id="messege_display" className=" bg-primary-light h-full w-full py-1 px-1 overflow-y-hidden ">
          <div className=" h-full overflow-y-auto " ref={messageEl}>
           {messages.map((m) =>
             m.sender._id === user._id ? (
             <div className="flex justify-end items-start mb-2 mr-2 " key={m._id}>
-              <div className="flex-col  px-4 py-2 ml-[25%] text-gray-700 bg-gray-100 rounded-xl shadow">
-                <span className="block justify-end text-sm text-end text-green-600">You</span>
-                <p className="block break-all text-sm">{m.content}</p>
+              <div className="flex-col  px-4 py-2 ml-[25%] text-white bg-primary-dark rounded-xl shadow">
+                <span className="block justify-end text-sm text-end text-gray-800">You</span>
+                <p className="block break-all text-slate-900 text-md font-normal">{m.content}</p>
               </div>
             </div>
           ) : (
@@ -46,11 +46,11 @@ export default function MessegeDisplay({ messages,user }) {
                 className="flex justify-start items-start mb-2"
                 
               >
-                <div className="flex-col  px-4 py-2 mr-[25%] text-gray-700 bg-teal-300 rounded-xl shadow">
-                  <span className="block justify-start text-start text-sm text-violet-600">
+                <div className="flex-col  px-4 py-2 mr-[25%] text-white bg-dark-seconday rounded-xl shadow">
+                  <span className="block justify-start text-start text-sm text-black ">
                     {m.sender.firstname}
                   </span>
-                  <span className="block break-all text-sm">{m.content}</span>
+                  <span className="block break-all text-md font-normal">{m.content}</span>
                 </div>
               </div>
             </div>

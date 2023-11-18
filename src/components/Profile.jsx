@@ -69,7 +69,7 @@ export default function Profile() {
   return (
     <div className="flex justify-center  ml-0.5 w-full h-full overflow-hidden">
       {/* {!showSidedrawer ? */}
-      <div className="p-2 flex cursor-pointer flex-col  w-full h-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-900 dark:border-gray-700 overflow-y-auto">
+      <div className="p-2 flex cursor-pointer flex-col  w-full h-full border border-gray-200 rounded-lg shadow bg-primary-dark  overflow-y-auto">
         {/* <div className=" mb-4 flex w-full flex-wrap items-stretch">
           <input
             type="search"
@@ -104,7 +104,7 @@ export default function Profile() {
           
         </div> */}
         <div
-          className="my-1 py-2 px-4 gap-2 flex justify-center items-center bg-gray-800 hover:bg-gray-500 focus:bg-neutral-900  text-white  transition ease-in duration-200 text-center text-sm font-semibold shadow-md focus:outline-none  rounded-lg "
+          className="my-1 py-2 px-4 gap-2 flex justify-center items-center bg-dark hover:bg-light-blue-1 text-white  transition ease-in duration-200 text-center text-sm font-semibold shadow-md focus:outline-none  rounded-lg "
           onClick={openDrawer}
         >
           <svg
@@ -127,7 +127,7 @@ export default function Profile() {
         </SideDrawer>
 
         <div
-          className="py-2 my-1 gap-2 px-4 flex justify-center items-center bg-gray-800 hover:bg-gray-500 focus:bg-neutral-900  text-white  transition ease-in duration-200 text-center text-sm font-semibold shadow-md focus:outline-none  rounded-lg  "
+          className="py-2 my-1 gap-2 px-4 flex justify-center items-center bg-dark hover:bg-light-blue-1  text-white  transition ease-in duration-200 text-center text-sm font-semibold shadow-md focus:outline-none  rounded-lg  "
           onClick={() => setCreateGroup(!showCreateGroup)}
         >
           <svg
@@ -145,7 +145,7 @@ export default function Profile() {
         {showCreateGroup && (
           <DroupDown header={"Create Group"} close={setCreateGroup} />
         )}
-        <div className="py-2 my-1 gap-2 px-4 flex justify-center items-center bg-gray-800 hover:bg-gray-500 focus:bg-neutral-900  text-white  transition ease-in duration-200 text-center text-sm font-semibold shadow-md focus:outline-none  rounded-lg ">
+        <div className="py-2 my-1 gap-2 px-4 flex justify-center items-center bg-dark hover:bg-light-blue-1  text-white  transition ease-in duration-200 text-center text-sm font-semibold shadow-md focus:outline-none  rounded-lg ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="1.2em"

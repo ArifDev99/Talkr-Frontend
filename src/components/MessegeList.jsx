@@ -44,7 +44,7 @@ export default function MessegeList({fetchAgain, setFetchAgain}) {
   }, [user,fetchAgain]);
   
   return (
-    <div className="flex flex-col h-full p-1 rounded-lg bg-gray-900 justify-center items-center mx-1">
+    <div className="flex flex-col h-full p-1 rounded-lg bg-primary-dark justify-center items-center mx-1">
       <div className="flex py-2 justify-between items-center pl-2 w-full  text-sm font-medium text-white border-b-2">
         My Chats
       </div>
@@ -54,7 +54,7 @@ export default function MessegeList({fetchAgain, setFetchAgain}) {
           <div className="overflow-y-scroll flex flex-col gap-1 cursor-pointer">
             {chats.map((chat) => (
               <div
-                className={`flex items-center gap-3 py-2 px-3 text-sm rounded-lg border border-slate-900 bg-gray-600 hover:bg-gray-700 focus:bg-slate-800 ${selectedChat === chat ? "bg-slate-800" : "bg-gray-600" }`}
+                className={`flex items-center gap-3 py-2 px-3 text-sm rounded-lg border border-slate-900 hover:bg-light-blue-2 focus:bg-dark-seconday ${selectedChat === chat ? "bg-dark-seconday" : "bg-dark" }`}
                 key={chat._id}
                 onClick={() => setSelectedChat(chat)}
               >

@@ -95,16 +95,16 @@ export default function Chat_input({ socket, fetchAgain,setFetchAgain ,allMessag
   }
 
   return (
-    <div className=" bg-gray-900 p-4 h-25 rounded-b-md w-full">
+    <div className=" bg-dark p-4 h-25 rounded-b-md w-full">
       {istyping ? <div className="text-xs text-gray-500 flex items-center">Someone Typing ...</div>:<></>}
       <form >
         <label htmlFor="chat" className="sr-only">
           Your message
         </label>
-        <div className="flex items-center px-3 py-2 rounded-lg bg-gray-50 dark:bg-gray-700">
+        <div className="flex items-center px-3 py-2 rounded-lg bg-primary-dark">
           <button
             type="button"
-            className="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600"
+            className="inline-flex justify-center p-2 text-dark rounded-lg cursor-pointer hover:text-dark hover:bg-gray-100 "
           >
             <svg
               aria-hidden="true"
@@ -123,7 +123,7 @@ export default function Chat_input({ socket, fetchAgain,setFetchAgain ,allMessag
           </button>
           <button
             type="button"
-            className="p-2 text-gray-500 rounded-lg cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600"
+            className="p-2 text-yellow-500 rounded-lg cursor-pointer hover:text-yellow-500 hover:bg-gray-100 "
             onClick={handleEmojibar}
           >
             <svg
@@ -156,7 +156,7 @@ export default function Chat_input({ socket, fetchAgain,setFetchAgain ,allMessag
           <textarea
             id="chat"
             rows="1"
-            className="block mx-1 p-2 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="block mx-1 p-2 w-full text-md font-normal text-black rounded-lg border border-gray-300  bg-primary-light  placeholder-gray-400"
             placeholder="Your message..."
             value={message}
             onChange={typingHandeler}
@@ -164,7 +164,7 @@ export default function Chat_input({ socket, fetchAgain,setFetchAgain ,allMessag
 
           <button
             type="button"
-            className="inline-flex justify-center p-2 text-blue-600 rounded-full cursor-pointer hover:bg-blue-100 dark:text-blue-500 dark:hover:bg-gray-600"
+            className="inline-flex justify-center p-2 text-dark rounded-full cursor-pointer hover:bg-blue-100 "
             onClick={sendmessage}
           >
             <svg
