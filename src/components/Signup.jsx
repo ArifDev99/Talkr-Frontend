@@ -56,6 +56,7 @@ export default function Signup() {
 
 
   const handleuserRegister = async(e) => {
+    setLoading(true);
     e.preventDefault();
     let userDetails={firstname,lastname,email,password,profile_img:pic};
     // localStorage.setItem("userDetails",JSON.stringify(userDetails))
@@ -68,12 +69,14 @@ export default function Signup() {
         },
         body:JSON.stringify(userDetails)
       })
-      let message=await req.text();
-      if (message !=="success"){
+      let data=await req.text();
+      if (data.message !=="success"){
         // setError(true)
+        setLoading(false)
         alert(message)
       }
       else{
+        setLoading(false)
         navigate("/signin");
 
       }

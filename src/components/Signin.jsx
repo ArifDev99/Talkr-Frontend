@@ -41,6 +41,7 @@ export default function Signin() {
     let data=await req.json();
     if (data.message!=="Successfully Login"){
       alert(data.message)
+      setLoading(false);
     }
     else{
       setLoading(false);
