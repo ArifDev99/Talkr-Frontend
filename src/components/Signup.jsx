@@ -74,7 +74,7 @@ export default function Signup() {
       if (data.message !=="Successfully created"){
         // setError(true)
         setLoading(false)
-        alert(message)
+        alert(data.message)
       }
       else{
         setLoading(false)
