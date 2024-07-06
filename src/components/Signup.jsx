@@ -69,7 +69,7 @@ export default function Signup() {
         },
         body:JSON.stringify(userDetails)
       })
-      let data=await req.text();
+      let data=await req.json();
       if (data.message !=="Successfully created"){
         // setError(true)
         setLoading(false)
@@ -77,7 +77,7 @@ export default function Signup() {
       }
       else{
         setLoading(false)
-        navigate("/login");
+        navigate("/signin");
 
       }
       // alert(message);
