@@ -77,7 +77,7 @@ export default function Signup() {
       }
       else{
         setLoading(false)
-        navigate("/signin");
+        navigate("/login");
 
       }
       // alert(message);
