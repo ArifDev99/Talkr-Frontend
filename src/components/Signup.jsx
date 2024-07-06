@@ -70,6 +70,7 @@ export default function Signup() {
         body:JSON.stringify(userDetails)
       })
       let data=await req.json();
+      console.log(data);
       if (data.message !=="Successfully created"){
         // setError(true)
         setLoading(false)
@@ -77,6 +78,7 @@ export default function Signup() {
       }
       else{
         setLoading(false)
+        alert("User Successfully created")
         navigate("/signin");
 
       }
