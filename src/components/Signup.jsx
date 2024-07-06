@@ -70,7 +70,7 @@ export default function Signup() {
         body:JSON.stringify(userDetails)
       })
       let data=await req.text();
-      if (data.message !=="success"){
+      if (data.message !=="Successfully created"){
         // setError(true)
         setLoading(false)
         alert(message)
