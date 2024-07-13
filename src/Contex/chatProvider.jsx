@@ -13,10 +13,10 @@ const ChatProvider=({children})=>{
 
     // const navigate=useNavigate();
 
-    // useEffect(() => {
-    //     const userInfo=JSON.parse(localStorage.getItem("userInfo"))
-    //     setUser(userInfo)
-    // }, [])
+    useEffect(() => {
+        const userInfo=JSON.parse(localStorage.getItem("userInfo"))
+        setUser(userInfo)
+    }, [])
    
 
     return (
