@@ -18,12 +18,14 @@ const BASE_URI=import.meta.env.VITE_BASE_URI
 //             "transports" : ["websocket", "polling", "flashsocket"]
 //         };
 
-const socket = io(`${BASE_URI}`,{
-  transports: ["websocket"]
-});
+// const socket = io(`${BASE_URI}`,{
+//   transports: ["websocket"]
+// });
 export default function Hero() {
   const [fetchAgain, setFetchAgain] = useState(false);
-  const [socketConnected, setSocketConnected] = useState(false);
+  // const [socketConnected, setSocketConnected] = useState(false);
+  const [socket, setSocket] = useState(null);
+
   // const [socket, setSocket] = useState(null);
   const { user} = ChatState();
   // const socket = io("http://localhost:4000");
@@ -52,28 +54,34 @@ export default function Hero() {
   // }, [user])
   
   // console.log(socket);
-  
+
   useEffect(() => {
     if (user && user._id) {
-      const socket = io(BASE_URI, {
-        transports: ['websocket']
+      const newSocket = io(`${BASE_URI}`,{
+      transports: ["websocket"]
       });
 
-      socket.on('connect', () => {
-        socket.emit('setup', user);
-        setSocketConnected(true);
-        console.log('Connected:', socket.id);
+      newSocket.on('connect', () => {
+        newSocket.emit('setup', user);
+        // setSocketConnected(true);
+        console.log('Connected:', newSocket.id);
       });
 
-      socket.on('Connected', (id) => {
+      newSocket.on('Connected', (id) => {
         console.log('Connected to server with id:', id);
       });
 
+      setSocket(newSocket);
+
       return () => {
-        socket.disconnect();
+        newSocket.disconnect();
       };
     }
   }, [user]);
+
+  if (!user || !user._id) {
+    return <div>Please sign in to access the chat</div>;
+  }
   
   return (
     <>

@@ -1,5 +1,5 @@
 import "./App.css";
-import { useEffect,lazy } from "react";
+import { useEffect,lazy, Suspense } from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -56,15 +56,19 @@ function App() {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<Layout />}>
+      <Route path="/" element={<Suspense fallback={<div>Loading...</div>}><Layout /></Suspense>}>
         {/* <Route index element={<Hero/>}/> */}
         <Route
          
          index
-         element={ isLogin ?  <Hero />:<Navigate replace to ={"/signup"}/>} 
+         element={ 
+          <Suspense fallback={<div>Loading...</div>}>
+          isLogin ?  <Hero />:<Navigate replace to ={"/signup"}/>
+          </Suspense>
+        } 
          />
-        <Route path="/signin" index element={<Signin />} />
-        <Route path="/signup" index element={<Signup />} />
+        <Route path="/signin" index element={<Suspense fallback={<div>Loading...</div>}><Signin /></Suspense>} />
+        <Route path="/signup" index element={<Suspense fallback={<div>Loading...</div>}><Signup /></Suspense>} />
       </Route>
     )
   );
