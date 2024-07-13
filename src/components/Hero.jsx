@@ -79,9 +79,9 @@ export default function Hero() {
     }
   }, [user]);
 
-  if (!user || !user._id) {
-    return <div>Please sign in to access the chat</div>;
-  }
+  // if (!user || !user._id) {
+  //   return <div>Please sign in to access the chat</div>;
+  // }
   
   return (
     <>
