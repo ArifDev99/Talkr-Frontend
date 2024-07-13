@@ -1,22 +1,23 @@
 import "./App.css";
-import Layout from "./components/Layout";
-import Hero from "./components/Hero";
+import { useEffect,lazy } from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Navigate,
   Route,
   RouterProvider,
- 
+  
 } from "react-router-dom";
-import Signup from "./components/Signup";
-import Signin from "./components/Signin";
+
+const Layout = lazy(() => import('./components/Layout'));
+const Hero = lazy(() => import('./components/Hero'));
+const Signup = lazy(() => import('./components/Signup'));
+const Signin = lazy(() => import('./components/Signin'));
 // import { io } from "socket.io-client";
 
 // import { Cookies } from "react-cookie";
 import Authchecker from "./common/Authchecker";
 import { ChatState } from "./Contex/chatProvider";
-import { useEffect } from "react";
 
 
 
