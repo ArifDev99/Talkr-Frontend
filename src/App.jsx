@@ -48,9 +48,9 @@ function App() {
     
     const userInfo=JSON.parse(localStorage.getItem("userInfo"));
     setUser(userInfo);
-  
+    
   }, [setUser]);
-
+  
   const isLogin= Authchecker();
   // console.log(isLogin)
 
@@ -63,7 +63,7 @@ function App() {
          index
          element={ 
           <Suspense fallback={<div>Loading...</div>}>
-          isLogin ?  <Hero />:<Navigate replace to ={"/signup"}/>
+          {isLogin ?  <Hero />:<Navigate replace to ={"/signup"}/>}
           </Suspense>
         } 
          />
