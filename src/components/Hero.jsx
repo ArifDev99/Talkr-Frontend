@@ -29,29 +29,51 @@ export default function Hero() {
   // const socket = io("http://localhost:4000");
   // // const [showSidedrawer,setShowSideDrawer]=useState(false);
   
-  useEffect(() => {
-    socket.on("connect", ()=>  {
+  // useEffect(() => {
+  //   socket.on("connect", ()=>  {
       
-      if(user && user._id){
-        socket.emit("setup",user);
-        // socket.join(user._id);
-        setSocketConnected(true);
+  //     if(user && user._id){
+  //       socket.emit("setup",user);
+  //       // socket.join(user._id);
+  //       setSocketConnected(true);
         
-      }else{
-        console.error("User data is missing or incomplete.");
-      }
-      socket.on("Connected",(id)=>{
-        console.log(id)
-      })
+  //     }else{
+  //       console.error("User data is missing or incomplete.");
+  //     }
+  //     socket.on("Connected",(id)=>{
+  //       console.log(id)
+  //     })
 
-      // console.log(socket.id)
-      // setSocket(socket);
-      // myUser=prompt("Enter Name")
-      // socket.emit("createuser",myUser);
-    });
-  }, [user])
+  //     // console.log(socket.id)
+  //     // setSocket(socket);
+  //     // myUser=prompt("Enter Name")
+  //     // socket.emit("createuser",myUser);
+  //   });
+  // }, [user])
   
   // console.log(socket);
+  
+  useEffect(() => {
+    if (user && user._id) {
+      const socket = io(BASE_URI, {
+        transports: ['websocket']
+      });
+
+      socket.on('connect', () => {
+        socket.emit('setup', user);
+        setSocketConnected(true);
+        console.log('Connected:', socket.id);
+      });
+
+      socket.on('Connected', (id) => {
+        console.log('Connected to server with id:', id);
+      });
+
+      return () => {
+        socket.disconnect();
+      };
+    }
+  }, [user]);
   
   return (
     <>
