@@ -38,34 +38,36 @@ import { useEffect } from "react";
 
 
 
-const isLogin= Authchecker();
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<Layout />}>
-      {/* <Route index element={<Hero/>}/> */}
-      <Route
-       
-        index
-        element={ isLogin ?  <Hero />:<Navigate replace to ={"/signup"}/>} 
-      />
-      <Route path="/signin" index element={<Signin />} />
-      <Route path="/signup" index element={<Signup />} />
-    </Route>
-  )
-);
 
 function App() {
-    const {user,setUser}=ChatState();
-
-  // console.log(isLogin)
-
+  const {user,setUser}=ChatState();
+  
   useEffect(() => {
     
     const userInfo=JSON.parse(localStorage.getItem("userInfo"));
     setUser(userInfo);
   
-  }, [])
+  }, [setUser]);
+
+  const isLogin= Authchecker();
+  // console.log(isLogin)
+
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<Layout />}>
+        {/* <Route index element={<Hero/>}/> */}
+        <Route
+         
+         index
+         element={ isLogin ?  <Hero />:<Navigate replace to ={"/signup"}/>} 
+         />
+        <Route path="/signin" index element={<Signin />} />
+        <Route path="/signup" index element={<Signup />} />
+      </Route>
+    )
+  );
+
   
 
   return (

@@ -123,6 +123,7 @@ export default function Navbar() {
           </div>
         ) : (
           <div className="flex items-center gap-2">
+            
             <NavLink
               to="/signup"
               className=" text-white bg-light-blue-2  rounded-lg p-2 hover:bg-light-blue-1 hover:text-white md:p-1 "
