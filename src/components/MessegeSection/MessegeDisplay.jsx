@@ -1,11 +1,11 @@
 import React, { useEffect, useState,useRef } from "react";
 
 
-export default function MessegeDisplay({ messages,user }) {
+export default function MessegeDisplay({ messages,user, messageEl,selectedChat }) {
 
 
 
-  const messageEl = useRef(null);
+  // const messageEl = useRef(null);
 
 
   useEffect(() => {
@@ -15,8 +15,9 @@ export default function MessegeDisplay({ messages,user }) {
         target.scroll({ top: target.scrollHeight, behavior: 'smooth' });
       });
     }
-  }, [])
+  }, [messageEl,messages,selectedChat])
 
+  
   return (
 
     <>

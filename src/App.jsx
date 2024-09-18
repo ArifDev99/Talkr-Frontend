@@ -17,7 +17,7 @@ const Signin = lazy(() => import('./components/Signin'));
 
 // import { Cookies } from "react-cookie";
 import Authchecker from "./common/Authchecker";
-import { ChatState } from "./Contex/chatProvider";
+import ChatProvider, { ChatState } from "./Contex/chatProvider";
 
 
 
@@ -42,14 +42,14 @@ import { ChatState } from "./Contex/chatProvider";
 
 
 function App() {
-  const {user,setUser}=ChatState();
+  // const {user,setUser}=ChatState();
   
-  useEffect(() => {
+  // useEffect(() => {
     
-    const userInfo=JSON.parse(localStorage.getItem("userInfo"));
-    setUser(userInfo);
+  //   const userInfo=JSON.parse(localStorage.getItem("userInfo"));
+  //   setUser(userInfo);
     
-  }, [setUser]);
+  // }, [setUser]);
   
   const isLogin= Authchecker();
   // console.log(isLogin)
@@ -76,7 +76,9 @@ function App() {
   
 
   return (
-    <RouterProvider router={router} />
+    <ChatProvider>
+      <RouterProvider router={router} />
+    </ChatProvider>
     // <RouterProvider router={router}>
     //   <Route path="/" element={isLogin ? <Navigate to="/" replace /> : <Navigate replace to ={"/signup"}/>} />
     // </RouterProvider>

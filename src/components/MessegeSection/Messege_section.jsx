@@ -9,20 +9,20 @@ import { io } from "socket.io-client";
 
 import Loading from "../../common/Loading";
 
-const BASE_URI=import.meta.env.VITE_BASE_URI
+const BASE_URI = import.meta.env.VITE_BASE_URI;
 
 var selectedChatCompare;
 export default function Messege_section({ socket, fetchAgain, setFetchAgain }) {
   const [allMessages, setallMessages] = useState([]);
   const [isShowMyChats, setIsShowMyChats] = useState(false);
   const [showMessageDisplay, setShowMessageDisplay] = useState(false);
-  
+
   const [typing, setTyping] = useState(false);
   const [istyping, setIsTyping] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const lastMessageRef = useRef(null);
-  const { user, selectedChat,notification, setNotification } = ChatState();
+  const { user, selectedChat, notification, setNotification } = ChatState();
 
   const showMychats = () => {
     console.log("show My Chats Clicked");
@@ -30,17 +30,29 @@ export default function Messege_section({ socket, fetchAgain, setFetchAgain }) {
   };
 
   // const [showSidedrawer,setShowSideDrawer]=useState(false);
-  
+
   // useEffect(() => {
-    //   socket?.on("update", (data) => setMessages([...messages, data]));
+  //   socket?.on("update", (data) => setMessages([...messages, data]));
   // }, [socket, messages]);
 
-  console.log("Notification",notification);
-  
-  useEffect(() => {
-    // 👇️ scroll to bottom every time messages change
-    lastMessageRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [allMessages]);
+  console.log("Notification", notification);
+
+  // useEffect(() => {
+  //   // 👇️ scroll to bottom every time messages change
+  //   lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
+  // }, [setallMessages, selectedChat,lastMessageRef]);
+
+  const messageEl = useRef(null);
+
+
+  // useEffect(() => {
+  //   if (messageEl) {
+  //     messageEl.current?.addEventListener('DOMNodeInserted', event => {
+  //       const { currentTarget: target } = event;
+  //       target.scroll({ top: target.scrollHeight, behavior: 'smooth' });
+  //     });
+  //   }
+  // }, [messageEl])
 
   const fetchAllMessages = async () => {
     setIsLoading(true);
@@ -59,52 +71,55 @@ export default function Messege_section({ socket, fetchAgain, setFetchAgain }) {
           Authorization: `Bearer ${user.accessToken}`,
         },
       };
-      
+
       let data = await fetch(
         `${BASE_URI}api/v1/message/${selectedChat._id}`,
         config
-        ).then((res) => res.json());
-        // console.log(data);
-        setIsLoading(false);
-        setallMessages(data);
-        // setFetchAgain(!fetchAgain);
-        socket.emit("join chat", selectedChat._id);
-      } catch (error) {
-        // alert("Cant fetch the Messages");
-        setIsLoading(false)
-        console.log("Can't Fetch the Messages");
-      }
-    };
+      ).then((res) => res.json());
+      // console.log(data);
+      setIsLoading(false);
+      setallMessages(data);
+      // setFetchAgain(!fetchAgain);
+      socket.emit("join chat", selectedChat._id);
+    } catch (error) {
+      // alert("Cant fetch the Messages");
+      setIsLoading(false);
+      console.log("Can't Fetch the Messages");
+    }
+  };
+
+
+
+
+
+  useEffect(() => {
+    fetchAllMessages();
+    setIsShowMyChats(false);
+    // for keep tarck of Selected Chat
+    selectedChatCompare = selectedChat;
+  }, [selectedChat, user]);
+
+  useEffect(() => {
+    console.log(socket);
+    socket?.on("typing", () => setIsTyping(true));
+
     
-    useEffect(() => {
-      fetchAllMessages();
-      setIsShowMyChats(false);
-      // for keep tarck of Selected Chat
-      selectedChatCompare = selectedChat;
-    }, [selectedChat, user]);
-    
-    useEffect(() => {
-      socket.on("typing", () => setIsTyping(true));
-      socket.on("stop typing", () => setIsTyping(false));
-      socket.on("message recieved", (newMessageRecieved) => {
+    socket?.on("stop typing", () => setIsTyping(false));
+    socket?.on("message recieved", (newMessageRecieved) => {
       if (
         !selectedChatCompare ||
         selectedChatCompare._id !== newMessageRecieved.chat._id
       ) {
         // give a Notification
-        if(!(notification.includes(newMessageRecieved))){
-          
-          setNotification([newMessageRecieved,...notification])
+        if (!notification.includes(newMessageRecieved)) {
+          setNotification([newMessageRecieved, ...notification]);
           setFetchAgain(!fetchAgain);
         }
-
       } else {
         setallMessages([...allMessages, newMessageRecieved]);
       }
     });
-  });
-
-
+  }, [setIsTyping, setFetchAgain, setNotification, setallMessages]);
 
   return (
     <>
@@ -112,34 +127,39 @@ export default function Messege_section({ socket, fetchAgain, setFetchAgain }) {
         <MessegeList fetchAgain={fetchAgain} />
       ) : (
         <div className="flex flex-col justify-center h-full  px-1 md:p-0 ">
-          {isLoading ? <Loading/>:
-          <>
-          <Chatbar
-            fetchAgain={fetchAgain}
-            setFetchAgain={setFetchAgain}
-            showMychats={showMychats}
-          />
-          {selectedChat ? (
-            <MessegeDisplay
-              messages={allMessages}
-              user={user}
-              lastMessageRef={lastMessageRef}
-            />
+          {isLoading ? (
+            <Loading />
           ) : (
-            <Dialog />
+            <>
+              <Chatbar
+                fetchAgain={fetchAgain}
+                setFetchAgain={setFetchAgain}
+                showMychats={showMychats}
+              />
+              {selectedChat ? (
+                <MessegeDisplay
+                  messages={allMessages}
+                  user={user}
+                  // lastMessageRef={lastMessageRef}
+                  // setallMessages={setallMessages}
+                  selectedChat={selectedChat}
+                  messageEl={messageEl}
+                />
+              ) : (
+                <Dialog />
+              )}
+              <Chat_input
+                allMessages={allMessages}
+                setallMessages={setallMessages}
+                socket={socket}
+                fetchAgain={fetchAgain}
+                setFetchAgain={setFetchAgain}
+                typing={typing}
+                setTyping={setTyping}
+                istyping={istyping}
+              />
+            </>
           )}
-          <Chat_input
-            allMessages={allMessages}
-            setallMessages={setallMessages}
-            socket={socket}
-            fetchAgain={fetchAgain}
-            setFetchAgain={setFetchAgain}
-            typing={typing}
-            setTyping={setTyping}
-            istyping={istyping}
-            
-          />
-          </>}
         </div>
       )}
     </>

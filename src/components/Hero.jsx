@@ -27,7 +27,7 @@ export default function Hero() {
   const [socket, setSocket] = useState(null);
 
   // const [socket, setSocket] = useState(null);
-  const { user} = ChatState();
+  const { user,setSelectedChat } = ChatState();
   // const socket = io("http://localhost:4000");
   // // const [showSidedrawer,setShowSideDrawer]=useState(false);
   
@@ -62,22 +62,24 @@ export default function Hero() {
       });
 
       newSocket.on('connect', () => {
+
         newSocket.emit('setup', user);
         // setSocketConnected(true);
         console.log('Connected:', newSocket.id);
       });
-
+      
       newSocket.on('Connected', (id) => {
         console.log('Connected to server with id:', id);
       });
-
+      
       setSocket(newSocket);
 
       return () => {
         newSocket.disconnect();
       };
     }
-  }, [user]);
+  }, [user,setSocket]);
+
 
   // if (!user || !user._id) {
   //   return <div>Please sign in to access the chat</div>;
